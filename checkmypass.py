@@ -9,7 +9,7 @@ def request_api_data(query_char):  # pass the hashed version of the password, re
         raise RuntimeError( f'Error fetching: {res.status_code}, check the api and try again')  # raise an error if no status 200
     return res
 
-def get_password_leaks_count(hashes, hash_to_check): # loops through the hash and count and check if any matches (how many times the password has been leaked)
+def get_password_leaks_count(hashes, hash_to_check): # loops through the hash and count, check if any matches (how many times the password has been leaked)
     hashes = (line.split(':') for line in hashes.text.splitlines())
     for h, count in hashes:
         if h == hash_to_check:  # tail end of the hashed password
@@ -32,5 +32,5 @@ def main(args):
             print(f'{password} was NOT found, carry on!')
         return 'done'
 
-if __name__ == '__main__':  # only run this file if it's being run from the command line and not imported in
+if __name__ == '__main__':  # only run this file from the command line and not imported in
     sys.exit(main(sys.argv[1:]))  # exit the process and get the return value from main
