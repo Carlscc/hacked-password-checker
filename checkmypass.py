@@ -32,5 +32,5 @@ def main(args):
             print(f'{password} was NOT found, carry on!')
         return 'done'
 
-if __name__ == '__main__':  # only run this file from the command line and not imported in
+if __name__ == '__main__':  # only run this file from the command line, not if imported in
     sys.exit(main(sys.argv[1:]))  # exit the process and get the return value from main
